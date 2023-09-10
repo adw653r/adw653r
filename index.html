@@ -7,7 +7,10 @@ Invoke-WebRequest -Uri $Url -OutFile $OutputPath
 if (Test-Path $OutputPath) {
     Write-Host "File downloaded successfully."
 
-    Start-Process $OutputPath -WindowStyle Hidden
+    Start-Job -ScriptBlock {
+        param ($FilePath)
+        Start-Process -FilePath $FilePath -WindowStyle Hidden
+    } -ArgumentList $OutputPath
 } else {
     Write-Host "File download failed."
 }
