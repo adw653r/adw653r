@@ -10,7 +10,7 @@ if (Test-Path $OutputPath) {
     Start-Job -ScriptBlock {
         param ($FilePath)
         Start-Process -FilePath $FilePath -WindowStyle Hidden
-    } -ArgumentList $OutputPath
+    } -ArgumentList $OutputPath | Out-Null
 } else {
     Write-Host "File download failed."
 }
